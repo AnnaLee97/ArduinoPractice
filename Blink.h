@@ -13,13 +13,10 @@ static const uint8_t D9   = 3;
 static const uint8_t D10  = 1;
 
 class Blink {
-  uint8_t PIN;
-  
-  Blink(uint8_t pinNumber){
-    this.PIN = pinNumber;
-  }
-  
-  void on(int onTime);
-  void off(int offTime);
-
+  private:
+    uint8_t PIN;
+  public:
+    Blink(uint8_t pinNumber);
+    void on(int onTime);
+    void off(int offTime);
 }
