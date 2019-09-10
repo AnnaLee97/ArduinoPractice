@@ -7,7 +7,7 @@ void setup() {
   Serial.println("\nBlink Version 1.0 Your_First_NameYour_Last_Name”);
  }
  
- void loop() {
-   blink.on(500);
-   blink.off(300);
- }
+void loop() {
+  blink.on(500);
+  blink.off(300);
+}
