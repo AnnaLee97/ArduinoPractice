@@ -43,7 +43,6 @@ void setup(){
   Serial.begin(115200);
   Serial.println();
 
-  
   // Start up the DS18B20 library
   sensors.begin();
   
