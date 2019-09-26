@@ -13,7 +13,7 @@ const char* password = "00000000";
 
 const char* host = "www.kma.go.kr";
 const String api = "/update?api_key=GZCICZN529CQ81KR&field1=";
-String arr[9];
+String temper;
 
 void setup()
 {
@@ -42,7 +42,17 @@ void setup()
     Serial.print("connecting to ");
     Serial.println(host);
 
-    // Use WiFiClient class to create TCP connections
+   
+     Serial.println();
+       
+}
+
+
+void loop()
+{
+    delay(5000); 
+    
+     // Use WiFiClient class to create TCP connections
     WiFiClient client;
     const int httpPort = 80;
     if (!client.connect(host, httpPort)) {
@@ -73,30 +83,18 @@ void setup()
     while(client.available()) {
         String str = client.readStringUntil('\n');
         if(str.indexOf("<temp>") >= 0){
-          arr[i] = str.substring(str.indexOf("<temp>")+6, str.lastIndexOf("</temp>"));
-          i++;
+          temper = str.substring(str.indexOf("<temp>")+6, str.lastIndexOf("</temp>"));
         }
     }
-     Serial.println();
-       
-}
-
-int j=0;
-void loop()
-{
-    delay(5000); 
-    if(j<9){
-    WiFiClient client;
+    
+    
     if (!client.connect("api.thingspeak.com", 80)) {
         Serial.println("connection failed");
         return;
         }
       
-        String url = api+arr[j];
-        client.println("GET "+ url +" HTTP/1.1\r\n" +
+        String thingspeak = api+temper;
+        client.println("GET "+ thingspeak +" HTTP/1.1\r\n" +
                    "Host: " + "api.thingspeak.com" + "\r\n"+
-                   "Connection: close\r\n\r\n");
-        j++;
-        delay(5000);
-     }
+                   "Connection: close\r\n\r\n");     
 }
