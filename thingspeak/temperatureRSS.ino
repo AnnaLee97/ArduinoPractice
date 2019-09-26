@@ -8,8 +8,8 @@
 
 #include <WiFi.h>
 
-const char* ssid     = "이수경";
-const char* password = "01210309";
+const char* ssid     = "myiptime";
+const char* password = "00000000";
 
 const char* host = "www.kma.go.kr";
 const String api = "/update?api_key=GZCICZN529CQ81KR&field1=";
